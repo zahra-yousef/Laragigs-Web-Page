@@ -28,6 +28,18 @@ use App\Models\Listing;
 //All Listing 
 Route::get('/', [ListingController::class, 'index']);
 
+//Show Create Form 
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+//Store Listing Dtat
+Route::post('/listings', [ListingController::class, 'store']);
+
+//Show Edit Form
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+//Upadte listing
+Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
 //Single Listing 
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
