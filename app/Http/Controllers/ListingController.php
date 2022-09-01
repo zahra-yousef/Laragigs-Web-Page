@@ -38,7 +38,7 @@ class ListingController extends Controller
         // dd($request->file('logo')->store()); 
         $formFields = $request->validate([
             'title' => 'required',
-            'company' => [ 'required', Rule::unique ('listings', 'company')] ,
+            'company' => ['required', Rule::unique ('listings', 'company')] ,
             'location' => 'required',
             'website' => 'required',
             'email' => ['required', 'email'],
@@ -66,7 +66,7 @@ class ListingController extends Controller
         // dd($request->file('logo')->store()); 
         $formFields = $request->validate([
             'title' => 'required',
-            'company' => [ 'required'] ,
+            'company' => 'required' ,
             'location' => 'required',
             'website' => 'required',
             'email' => ['required', 'email'],
@@ -81,5 +81,11 @@ class ListingController extends Controller
         $listing->update($formFields);
         
         return back()->with('message','Listing updated successfully!');
+    }
+
+    //Delete Listing
+    public function destroy(Listing $listing){
+        $listing->delete();
+        return redirect('/')->with('message','Listing Deleted Successfully');
     }
 }
